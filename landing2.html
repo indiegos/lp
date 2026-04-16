@@ -385,11 +385,19 @@
             grid.innerHTML = '';
 
             CONFIG.relatedProducts.forEach(product => {
-                const card = document.createElement('a');
+                const card = document.createElement('div');
                 card.className = 'product-card';
-                card.href = product.productLink;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.addEventListener('click', () => {
+                    window.open(product.productLink, '_blank', 'noopener');
+                });
+                card.addEventListener('keypress', event => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        window.open(product.productLink, '_blank', 'noopener');
+                    }
+                });
 
                 const image = document.createElement('div');
                 image.className = 'product-image';
@@ -422,15 +430,20 @@
                 description.className = 'product-description';
                 description.textContent = product.description;
 
-                const link = document.createElement('div');
-                const linkButton = document.createElement('span');
+                const linkWrapper = document.createElement('div');
+                const linkButton = document.createElement('a');
                 linkButton.className = 'product-link';
+                linkButton.href = 'javascript:void(0)';
                 linkButton.textContent = 'Lihat Produk';
-                link.appendChild(linkButton);
+                linkButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    window.open(product.productLink, '_blank', 'noopener');
+                });
+                linkWrapper.appendChild(linkButton);
 
                 body.appendChild(title);
                 body.appendChild(description);
-                body.appendChild(link);
+                body.appendChild(linkWrapper);
                 card.appendChild(image);
                 card.appendChild(body);
                 grid.appendChild(card);

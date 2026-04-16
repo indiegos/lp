@@ -421,7 +421,7 @@
         const CONFIG = {
             shopeeLink: 'https://shopee.co.id/',
             tokopediaLink: 'https://www.tokopedia.com/',
-            heroImageUrl: 'https://indiegos.github.io/lp/shopping.webp?w=600&h=400&fit=crop&auto=format',
+            heroImageUrl: 'https://raw.githubusercontent.com/indiegos/lp/main/shopping.webp',
             trackingEnabled: true,
             analyticsId: 'GA_MEASUREMENT_ID'
         };
@@ -502,11 +502,13 @@
             heroImage.innerHTML = '';
 
             if (CONFIG.heroImageUrl) {
+                console.log('Loading hero image:', CONFIG.heroImageUrl);
+
                 // Remove no-image class saat mulai loading
                 heroImage.classList.remove('no-image');
 
                 // Show loading state
-                heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.6); font-size: 0.9rem;">Loading...</div>';
+                heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 0.9rem;"><div>Loading image...</div></div>';
 
                 const img = document.createElement('img');
                 img.src = CONFIG.heroImageUrl;
@@ -518,23 +520,47 @@
                 img.style.display = 'block';
                 img.style.borderRadius = 'inherit';
 
+                // Set timeout untuk loading (10 detik)
+                const loadTimeout = setTimeout(() => {
+                    console.warn('Image load timeout after 10 seconds');
+                    heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 0.9rem;"><div>Image load timeout</div></div>';
+                    heroImage.classList.add('no-image');
+                }, 10000);
+
                 img.onerror = function() {
-                    console.log('Hero image failed to load');
-                    heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 1rem;">Gambar tidak dapat dimuat</div>';
+                    clearTimeout(loadTimeout);
+                    console.error('Hero image failed to load:', CONFIG.heroImageUrl);
+                    console.error('Error details:', {
+                        src: img.src,
+                        naturalWidth: img.naturalWidth,
+                        naturalHeight: img.naturalHeight,
+                        complete: img.complete
+                    });
+
+                    heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 0.9rem;"><div>Gambar gagal dimuat</div><div style="font-size: 0.7rem; margin-top: 4px; opacity: 0.7;">Periksa URL gambar</div></div>';
                     heroImage.classList.add('no-image');
                 };
 
                 img.onload = function() {
-                    console.log('Hero image loaded successfully');
+                    clearTimeout(loadTimeout);
+                    console.log('Hero image loaded successfully:', {
+                        src: img.src,
+                        naturalWidth: img.naturalWidth,
+                        naturalHeight: img.naturalHeight,
+                        complete: img.complete
+                    });
+
                     heroImage.innerHTML = '';
                     heroImage.classList.remove('no-image');
                     heroImage.appendChild(img);
                 };
             } else {
+                console.log('No hero image URL provided');
                 // Jika tidak ada URL gambar, tampilkan placeholder
                 heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 1rem;">Gambar Produk</div>';
-         * Handle button click event
-         */
+                heroImage.classList.add('no-image');
+            }
+        }
         function handleButtonClick(e, platform, url) {
             e.preventDefault();
             

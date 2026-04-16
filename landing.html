@@ -119,10 +119,13 @@
             display: block;
         }
 
-        .hero-image.no-image::before {
-            content: '🛍️';
-            font-size: 4rem;
-            margin-right: 12px;
+        .hero-image.no-image {
+            background: var(--gradient-blue);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* BUTTONS SECTION */
@@ -388,9 +391,7 @@
         <main class="content">
             <!-- HERO IMAGE -->
             <section class="hero-section">
-                <div class="hero-image no-image" id="heroImage">
-                    Gambar Produk
-                </div>
+                <div class="hero-image no-image" id="heroImage"></div>
             </section>
 
             <!-- CTA BUTTONS -->
@@ -494,25 +495,44 @@
          */
         function loadHeroImage() {
             const heroImage = document.getElementById('heroImage');
-            
+
             if (!heroImage) return;
 
+            // Clear any existing content first
+            heroImage.innerHTML = '';
+
             if (CONFIG.heroImageUrl) {
+                // Remove no-image class saat mulai loading
+                heroImage.classList.remove('no-image');
+
+                // Show loading state
+                heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.6); font-size: 0.9rem;">Loading...</div>';
+
                 const img = document.createElement('img');
                 img.src = CONFIG.heroImageUrl;
                 img.alt = 'Produk Pilihan';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.objectPosition = 'center';
+                img.style.display = 'block';
+                img.style.borderRadius = 'inherit';
+
                 img.onerror = function() {
                     console.log('Hero image failed to load');
+                    heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 1rem;">Gambar tidak dapat dimuat</div>';
                     heroImage.classList.add('no-image');
                 };
+
                 img.onload = function() {
+                    console.log('Hero image loaded successfully');
                     heroImage.innerHTML = '';
+                    heroImage.classList.remove('no-image');
                     heroImage.appendChild(img);
                 };
-            }
-        }
-
-        /**
+            } else {
+                // Jika tidak ada URL gambar, tampilkan placeholder
+                heroImage.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: rgba(255,255,255,0.8); font-size: 1rem;">Gambar Produk</div>';
          * Handle button click event
          */
         function handleButtonClick(e, platform, url) {

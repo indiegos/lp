@@ -1,0 +1,50 @@
+{
+  "site": {
+    "title": "Belanja Hemat Online",
+    "description": "Temukan ribuan produk terbaik dengan harga terjangkau",
+    "author": "Your Name"
+  },
+  "affiliate": {
+    "shopee": {
+      "name": "Shopee",
+      "link": "https://shopee.co.id/",
+      "description": "Belanja di Shopee dan nikmati pengiriman gratis!",
+      "icon": "🛒"
+    },
+    "tokopedia": {
+      "name": "Tokopedia",
+      "link": "https://www.tokopedia.com/",
+      "description": "Belanja di Tokopedia dengan jaminan 100% aman!",
+      "icon": "🛍️"
+    }
+  },
+  "hero": {
+    "imageUrl": null,
+    "defaultText": "🛍️ Gambar Produk",
+    "height": "300px"
+  },
+  "stats": {
+    "users": "500K+",
+    "products": "1M+",
+    "savings": "50%+"
+  },
+  "tracking": {
+    "googleAnalyticsId": "GA_MEASUREMENT_ID",
+    "enabled": true
+  },
+  "colors": {
+    "primary": "#5B9EED",
+    "shopeeOrange": "#f15a24",
+    "tokopediaGreen": "#1db446",
+    "darkGray": "#333",
+    "lightGray": "#f5f5f5",
+    "white": "#ffffff"
+  },
+  "features": {
+    "animationsEnabled": true,
+    "pulseButtonOnLoad": true,
+    "localTracking": true,
+    "smoothScroll": true,
+    "lazyLoadImages": true
+  }
+}

@@ -423,7 +423,10 @@
                 description.textContent = product.description;
 
                 const link = document.createElement('div');
-                link.innerHTML = '<span class="product-link">Lihat Produk</span>';
+                const linkButton = document.createElement('span');
+                linkButton.className = 'product-link';
+                linkButton.textContent = 'Lihat Produk';
+                link.appendChild(linkButton);
 
                 body.appendChild(title);
                 body.appendChild(description);

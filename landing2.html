@@ -127,10 +127,23 @@
             position: relative;
             overflow: hidden;
             transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button span {
+            text-decoration: none;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
+        }
+
+        .cta-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            line-height: 1;
         }
 
         .btn-shopee {
@@ -300,9 +313,11 @@
 
         <div class="button-row">
             <a href="javascript:void(0)" class="cta-button btn-shopee" id="btnShopee">
+                <span class="cta-icon">🛒</span>
                 <span>Belanja di SHOPEE</span>
             </a>
             <a href="javascript:void(0)" class="cta-button btn-tokopedia" id="btnTokopedia">
+                <span class="cta-icon">🛒</span>
                 <span>Belanja di TOKOPEDIA</span>
             </a>
         </div>

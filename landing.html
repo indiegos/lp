@@ -61,39 +61,16 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* HEADER SECTION */
-        .header {
-            padding: 24px 20px;
-            text-align: center;
-            background: var(--white);
-        }
-
-        .header h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
-
-        .header p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            font-weight: 500;
         }
 
         /* MAIN CONTENT */
         .content {
-            flex: 1;
-            padding: 0 16px;
+            width: 100%;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            width: 100%;
+            gap: 24px;
         }
 
         /* HERO IMAGE SECTION */
@@ -154,7 +131,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-bottom: 32px;
             animation: fadeUp 0.6s ease-out 0.1s both;
         }
 
@@ -170,9 +146,9 @@
         }
 
         .cta-button {
-            padding: 16px 20px;
-            font-size: 1rem;
-            font-weight: 700;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
             border: none;
             border-radius: var(--radius-md);
             cursor: pointer;
@@ -181,14 +157,13 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: var(--shadow-md);
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
-            font-size: 0.95rem;
-            flex-direction: column;
+            min-height: 44px;
         }
 
         .cta-button::before {
@@ -240,77 +215,35 @@
         }
 
         .button-icon {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
         }
 
         .button-text {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 6px;
         }
 
         .button-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             opacity: 0.9;
             text-transform: capitalize;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         /* FOOTER */
-        footer {
-            background: var(--text-dark);
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            padding: 20px;
-            font-size: 0.85rem;
-            margin-top: auto;
-        }
-
-        footer p {
-            margin: 6px 0;
-        }
-
-        .social-links {
-            margin: 12px 0;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-blue);
-            transform: translateY(-2px);
+        .footer {
+            display: none;
         }
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 480px) {
-            .header {
-                padding: 20px 16px;
-            }
-
-            .header h1 {
-                font-size: 1.4rem;
-            }
-
-            .header p {
-                font-size: 0.9rem;
-            }
-
             .content {
-                padding: 20px 12px;
+                padding: 16px;
             }
 
             .hero-section {
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
 
             .hero-image {
@@ -320,34 +253,29 @@
 
             .buttons-section {
                 gap: 10px;
-                margin-bottom: 24px;
             }
 
             .cta-button {
-                padding: 14px 16px;
-                font-size: 0.9rem;
-                letter-spacing: 0.6px;
-                gap: 6px;
+                padding: 10px 14px;
+                font-size: 0.85rem;
+                letter-spacing: 0.4px;
+                gap: 5px;
             }
 
             .button-icon {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .button-text {
-                gap: 1px;
+                gap: 5px;
             }
 
             .button-label {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
             }
         }
 
         @media (max-width: 360px) {
-            .header h1 {
-                font-size: 1.2rem;
-            }
-
             .content {
                 padding: 16px 12px;
             }
@@ -361,14 +289,6 @@
 
         /* TABLET OPTIMIZATION */
         @media (min-width: 768px) {
-            .header {
-                padding: 32px 20px;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
             .content {
                 padding: 40px 20px;
             }
@@ -380,12 +300,11 @@
 
             .buttons-section {
                 gap: 16px;
-                margin-bottom: 40px;
             }
 
             .cta-button {
-                padding: 18px 24px;
-                font-size: 1rem;
+                padding: 16px 20px;
+                font-size: 0.95rem;
             }
         }
 
@@ -395,17 +314,13 @@
                 max-width: 700px;
             }
 
-            .header h1 {
-                font-size: 2.2rem;
-            }
-
             .hero-image {
                 aspect-ratio: 16 / 10;
             }
 
             .cta-button {
-                padding: 20px 28px;
-                font-size: 1.05rem;
+                padding: 18px 24px;
+                font-size: 1rem;
             }
 
             .buttons-section {
@@ -469,12 +384,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
-        <header class="header">
-            <h1>Belanja Hemat Online</h1>
-            <p>Promo Spesial Hari Ini</p>
-        </header>
-
         <!-- MAIN CONTENT -->
         <main class="content">
             <!-- HERO IMAGE -->
@@ -502,16 +411,6 @@
                 </a>
             </section>
         </main>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>&copy; <span id="year"></span> Belanja Hemat. Semua Hak Dilindungi.</p>
-            <div class="social-links">
-                <a href="javascript:void(0)" title="Facebook">Facebook</a>
-                <a href="javascript:void(0)" title="Instagram">Instagram</a>
-                <a href="javascript:void(0)" title="WhatsApp">WhatsApp</a>
-            </div>
-        </footer>
     </div>
 
     <script>
@@ -545,9 +444,6 @@
          * Initialize app on page load
          */
         function initializeApp() {
-            // Set tahun di footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-            
             // Add page visibility change tracking
             document.addEventListener('visibilitychange', function() {
                 if (document.visibilityState === 'visible') {

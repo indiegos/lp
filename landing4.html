@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Landing page affiliate Shopee & Tokopedia dengan Related Product dinamis.">
+    <meta name="keywords" content="belanja online, shopee, tokopedia, affiliate, related products">
+    <meta property="og:title" content="Belanja Hemat V2 - Related Products">
+    <meta property="og:description" content="Temukan produk terkait terbaik dan langsung belanja ke marketplace.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://raw.githubusercontent.com/indiegos/lp/main/shopping.webp">
+    <meta property="og:url" content="">
+    <meta name="theme-color" content="#5B9EED">
+    <link rel="canonical" href="">
+    <title>Belanja Hemat V2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --shopee-orange: #EE5A3F;
+            --tokopedia-green: #1DB446;
+            --primary-blue: #5B9EED;
+            --gradient-blue: linear-gradient(135deg, #5B9EED 0%, #3B82F6 100%);
+            --white: #FFFFFF;
+            --text-dark: #1B1B1B;
+            --text-light: #666666;
+            --surface: #F8F9FA;
+            --surface-soft: #FFFFFF;
+            --shadow-sm: 0 3px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 26px;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #EFF2F7;
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        .app-shell {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 22px 18px 40px;
+        }
+
+        .hero-panel {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .hero-panel .hero-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--gradient-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition);
+        }
+
+        .hero-panel .hero-image:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-panel .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-panel .hero-image.no-image {
+            background: var(--gradient-blue);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .hero-panel .hero-image.no-image > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin: 18px 0 30px;
+        }
+
+        .cta-button {
+            padding: 16px 14px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button span {
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            line-height: 1;
+        }
+
+        .btn-shopee {
+            background: linear-gradient(135deg, #F57C3B 0%, #EE5A3F 100%);
+        }
+
+        .btn-tokopedia {
+            background: linear-gradient(135deg, #1EC454 0%, #1DB446 100%);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            transition: left 0.35s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .related-section {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 18px;
+        }
+
+        .related-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(34, 197, 94, 0.18);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card:focus-visible {
+            outline: 3px solid rgba(91, 158, 237, 0.6);
+            outline-offset: 3px;
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #f3f8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .product-image.no-image {
+            background: #f3f8ff;
+            color: #4b5563;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .product-body {
+            padding: 14px 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-name {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+        }
+
+        .product-description {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            border-radius: 999px;
+            background: var(--primary-blue);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.25s ease;
+        }
+
+        .product-link:hover {
+            background: #3b82f6;
+        }
+
+        @media (max-width: 640px) {
+            .app-shell {
+                padding: 18px 14px 28px;
+            }
+
+            .button-row {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .cta-button {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+            }
+
+            .product-body {
+                padding: 12px 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-shell">
+        <div class="hero-panel">
+            <div class="hero-image no-image" id="heroImage">
+                <div>Gambar Produk</div>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <a href="javascript:void(0)" class="cta-button btn-shopee" id="btnShopee">
+                <span class="cta-icon">🛒</span>
+                <span>Belanja di SHOPEE</span>
+            </a>
+            <a href="javascript:void(0)" class="cta-button btn-tokopedia" id="btnTokopedia">
+                <span class="cta-icon">🛒</span>
+                <span>Belanja di TOKOPEDIA</span>
+            </a>
+        </div>
+
+        <section class="related-section">
+            <div class="related-title">Related Product</div>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+    </div>
+
+    <script>
+        // ─────────────────────────────────────────────────────────────────────
+        // KONFIGURASI — ubah bagian ini sesuai produk yang dipromosikan
+        // ─────────────────────────────────────────────────────────────────────
+        const CONFIG = {
+            heroTitle: 'Produk Pilihan',
+            shopeeLink: 'https://shopee.co.id/',
+            tokopediaLink: 'https://www.tokopedia.com/',
+            heroImageUrl: 'https://raw.githubusercontent.com/indiegos/lp/main/shopping.webp',
+            relatedProducts: [
+                {
+                    title: 'Produk Terkait 1',
+                    description: 'Deskripsi singkat untuk produk pertama.',
+                    imageUrl: 'https://down-id.img.susercontent.com/file/id-11134207-8224q-mjuygqu2jke80f.webp',
+                    productLink: 'https://shopee.co.id/'
+                },
+                {
+                    title: 'Produk Terkait 2',
+                    description: 'Deskripsi singkat untuk produk kedua.',
+                    imageUrl: 'https://down-id.img.susercontent.com/file/id-11134207-822wl-mmoizr4tvz0j77.webp',
+                    productLink: 'https://www.tokopedia.com/'
+                },
+                {
+                    title: 'Produk Terkait 3',
+                    description: 'Deskripsi singkat untuk produk ketiga.',
+                    imageUrl: 'https://down-id.img.susercontent.com/file/id-11134207-822wg-mmn09jlkomiq4a@resize_w900_nl.webp',
+                    productLink: 'https://shopee.co.id/'
+                },
+                {
+                    title: 'Produk Terkait 4',
+                    description: 'Deskripsi singkat untuk produk keempat.',
+                    imageUrl: 'https://down-id.img.susercontent.com/file/id-11134207-822wi-mlfvj27avfutd0@resize_w900_nl.webp',
+                    productLink: 'https://www.tokopedia.com/'
+                }
+            ]
+        };
+
+        // ─────────────────────────────────────────────────────────────────────
+        // AFFILIATE CLICK TRACKER — cookie 7 hari
+        // ─────────────────────────────────────────────────────────────────────
+        const COOKIE_EXPIRY_DAYS = 7;
+        const COOKIE_NAME = 'affiliate_clicks';
+        const MAX_ENTRIES = 50;
+
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = `${name}=${encodeURIComponent(JSON.stringify(value))}; expires=${expires}; path=/; SameSite=Lax`;
+        }
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1') + '=([^;]*)'));
+            try {
+                return match ? JSON.parse(decodeURIComponent(match[1])) : null;
+            } catch {
+                return null;
+            }
+        }
+
+        /**
+         * Catat klik affiliate ke dalam cookie selama 7 hari.
+         * @param {string} source   - 'shopee' | 'tokopedia' | 'related'
+         * @param {string} product  - Nama produk yang diklik
+         * @param {string} url      - URL tujuan
+         */
+        function trackAffiliateClick(source, product, url) {
+            const existing = getCookie(COOKIE_NAME) || [];
+            existing.push({
+                source,
+                product,
+                url,
+                time: new Date().toISOString()
+            });
+            // Batasi maksimal MAX_ENTRIES entri agar cookie tidak membengkak
+            const trimmed = existing.slice(-MAX_ENTRIES);
+            setCookie(COOKIE_NAME, trimmed, COOKIE_EXPIRY_DAYS);
+            console.info('[Affiliate Tracker] Klik dicatat ✓', { source, product });
+        }
+
+        /**
+         * Tampilkan semua data klik di console browser.
+         * Ketik getAffiliateClicks() di DevTools → Console untuk melihatnya.
+         */
+        function getAffiliateClicks() {
+            const data = getCookie(COOKIE_NAME);
+            if (!data || data.length === 0) {
+                console.log('[Affiliate Tracker] Belum ada data klik.');
+                return [];
+            }
+            console.table(data);
+            return data;
+        }
+
+        // Expose ke global agar bisa diakses dari DevTools
+        window.getAffiliateClicks = getAffiliateClicks;
+
+        // ─────────────────────────────────────────────────────────────────────
+        // INIT
+        // ─────────────────────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHeroImage();
+            renderRelatedProducts();
+            setupButtons();
+        });
+
+        function loadHeroImage() {
+            const heroImage = document.getElementById('heroImage');
+            heroImage.innerHTML = '';
+            heroImage.classList.remove('no-image');
+
+            if (!CONFIG.heroImageUrl) {
+                heroImage.classList.add('no-image');
+                heroImage.innerHTML = '<div>Gambar Produk</div>';
+                return;
+            }
+
+            const img = document.createElement('img');
+            img.src = CONFIG.heroImageUrl;
+            img.alt = CONFIG.heroTitle;
+            img.onload = () => {
+                heroImage.innerHTML = '';
+                heroImage.classList.remove('no-image');
+                heroImage.appendChild(img);
+            };
+            img.onerror = () => {
+                heroImage.classList.add('no-image');
+                heroImage.innerHTML = '<div>Gambar tidak dapat dimuat</div>';
+            };
+        }
+
+        function setupButtons() {
+            document.getElementById('btnShopee').addEventListener('click', () => {
+                trackAffiliateClick('shopee', CONFIG.heroTitle, CONFIG.shopeeLink);
+                window.open(CONFIG.shopeeLink, '_blank', 'noopener,noreferrer');
+            });
+            document.getElementById('btnTokopedia').addEventListener('click', () => {
+                trackAffiliateClick('tokopedia', CONFIG.heroTitle, CONFIG.tokopediaLink);
+                window.open(CONFIG.tokopediaLink, '_blank', 'noopener,noreferrer');
+            });
+        }
+
+        function renderRelatedProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            CONFIG.relatedProducts.forEach(product => {
+                // Gunakan <a> tag agar semantik & accessible
+                const card = document.createElement('a');
+                card.className = 'product-card';
+                card.href = product.productLink;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+                card.setAttribute('aria-label', `Lihat produk: ${product.title}`);
+
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    trackAffiliateClick('related', product.title, product.productLink);
+                    window.open(product.productLink, '_blank', 'noopener,noreferrer');
+                });
+
+                // Gambar produk
+                const imageWrapper = document.createElement('div');
+                imageWrapper.className = 'product-image';
+
+                if (product.imageUrl) {
+                    const img = document.createElement('img');
+                    img.src = product.imageUrl;
+                    img.alt = product.title;
+                    img.loading = 'lazy'; // lazy load untuk gambar di bawah fold
+                    img.onerror = () => {
+                        imageWrapper.classList.add('no-image');
+                        imageWrapper.innerHTML = '<span>Gambar tidak tersedia</span>';
+                    };
+                    imageWrapper.appendChild(img);
+                } else {
+                    imageWrapper.classList.add('no-image');
+                    imageWrapper.innerHTML = '<span>Gambar tidak tersedia</span>';
+                }
+
+                // Body konten
+                const body = document.createElement('div');
+                body.className = 'product-body';
+
+                const title = document.createElement('div');
+                title.className = 'product-name';
+                title.textContent = product.title;
+
+                const description = document.createElement('div');
+                description.className = 'product-description';
+                description.textContent = product.description;
+
+                const linkButton = document.createElement('span');
+                linkButton.className = 'product-link';
+                linkButton.textContent = 'Lihat Produk';
+
+                body.appendChild(title);
+                body.appendChild(description);
+                body.appendChild(linkButton);
+                card.appendChild(imageWrapper);
+                card.appendChild(body);
+                grid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -2,12 +2,13 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Temukan produk terbaik dengan harga terjangkau di Shopee dan Tokopedia">
-    <meta name="keywords" content="belanja online, shopee, tokopedia, affiliate">
-    <meta property="og:title" content="Belanja Hemat di Shopee & Tokopedia">
-    <meta property="og:description" content="Dapatkan penawaran terbaik dan diskon menarik setiap hari">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Belanja online dengan harga terbaik di Shopee dan Tokopedia">
+    <meta name="keywords" content="belanja online, shopee, tokopedia, affiliate, promo">
+    <meta property="og:title" content="Belanja Hemat - Shopee & Tokopedia">
+    <meta property="og:description" content="Temukan ribuan produk pilihan dengan harga terjangkau">
     <meta property="og:type" content="website">
+    <meta name="theme-color" content="#5B9EED">
     <title>Belanja Hemat - Shopee & Tokopedia</title>
     <style>
         * {
@@ -17,40 +18,95 @@
         }
 
         :root {
-            --shopee-orange: #f15a24;
-            --tokopedia-green: #1db446;
+            --shopee-orange: #EE5A3F;
+            --tokopedia-green: #1DB446;
             --primary-blue: #5B9EED;
-            --dark-gray: #333;
-            --light-gray: #f5f5f5;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --gradient-blue: linear-gradient(135deg, #5B9EED 0%, #3B82F6 100%);
+            --dark-bg: #0F1419;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
         }
 
         html {
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Roboto, 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* HEADER SECTION */
         .header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #4A8FD8 100%);
-            padding: 40px 20px;
+            padding: 24px 20px;
             text-align: center;
+            background: var(--white);
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            flex: 1;
+            padding: 0 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* HERO IMAGE SECTION */
+        .hero-section {
+            width: 100%;
+            margin-bottom: 32px;
             animation: slideDown 0.6s ease-out;
         }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
@@ -58,40 +114,25 @@
             }
         }
 
-        .header h1 {
-            color: var(--white);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-
-        /* HERO IMAGE SECTION */
-        .hero-section {
-            padding: 40px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .hero-image {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #4A8FD8 100%);
-            border-radius: 12px;
+            aspect-ratio: 3 / 2;
+            background: var(--gradient-blue);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
-            box-shadow: var(--shadow);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
             position: relative;
+            transition: var(--transition);
+        }
+
+        .hero-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(91, 158, 237, 0.25);
         }
 
         .hero-image img {
@@ -101,20 +142,20 @@
             display: block;
         }
 
-        .hero-image.no-image {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #4A8FD8 100%);
-            font-size: 3rem;
+        .hero-image.no-image::before {
+            content: '🛍️';
+            font-size: 4rem;
+            margin-right: 12px;
         }
 
-        /* PROMO SECTION */
-        .promo-section {
-            padding: 30px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-            animation: fadeUp 0.6s ease-out 0.2s both;
+        /* BUTTONS SECTION */
+        .buttons-section {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+            animation: fadeUp 0.6s ease-out 0.1s both;
         }
 
         @keyframes fadeUp {
@@ -128,82 +169,26 @@
             }
         }
 
-        .promo-tag {
-            display: inline-block;
-            background: linear-gradient(135deg, #FF6B6B 0%, #FF5252 100%);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-        }
-
-        .promo-text {
-            font-size: 1rem;
-            color: var(--dark-gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .promo-highlight {
-            color: var(--shopee-orange);
-            font-weight: 600;
-        }
-
-        .benefits-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 20px 0;
-            font-size: 0.9rem;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--light-gray);
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-blue);
-        }
-
-        .benefit-icon {
-            font-size: 1.3rem;
-            min-width: 20px;
-        }
-
-        /* CTA BUTTONS */
-        .buttons-section {
-            padding: 30px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            animation: fadeUp 0.6s ease-out 0.4s both;
-        }
-
         .cta-button {
-            padding: 18px 40px;
-            font-size: 1.2rem;
+            padding: 16px 20px;
+            font-size: 1rem;
             font-weight: 700;
             border: none;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: var(--shadow);
+            gap: 8px;
+            box-shadow: var(--shadow-md);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             position: relative;
             overflow: hidden;
+            font-size: 0.95rem;
+            flex-direction: column;
         }
 
         .cta-button::before {
@@ -213,8 +198,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: left 0.3s ease;
+            background: rgba(255, 255, 255, 0.15);
+            transition: left 0.4s ease;
+            z-index: 1;
         }
 
         .cta-button:hover::before {
@@ -222,251 +208,218 @@
         }
 
         .cta-button:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
 
         .btn-shopee {
-            background: linear-gradient(135deg, var(--shopee-orange) 0%, #E84B0D 100%);
+            background: linear-gradient(135deg, #F57C3B 0%, #EE5A3F 100%);
             color: white;
         }
 
         .btn-shopee:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 12px rgba(241, 90, 36, 0.3);
+            box-shadow: 0 8px 20px rgba(238, 90, 63, 0.3);
         }
 
         .btn-shopee:active {
-            box-shadow: 0 4px 8px rgba(241, 90, 36, 0.3);
+            box-shadow: 0 4px 12px rgba(238, 90, 63, 0.3);
         }
 
         .btn-tokopedia {
-            background: linear-gradient(135deg, var(--tokopedia-green) 0%, #158C38 100%);
+            background: linear-gradient(135deg, #1EC454 0%, #1DB446 100%);
             color: white;
         }
 
         .btn-tokopedia:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 12px rgba(29, 180, 70, 0.3);
+            box-shadow: 0 8px 20px rgba(29, 180, 70, 0.3);
         }
 
         .btn-tokopedia:active {
-            box-shadow: 0 4px 8px rgba(29, 180, 70, 0.3);
+            box-shadow: 0 4px 12px rgba(29, 180, 70, 0.3);
         }
 
         .button-icon {
             font-size: 1.4rem;
         }
 
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .button-label {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            text-transform: capitalize;
+            font-weight: 600;
+        }
+
         /* FOOTER */
         footer {
-            background: var(--dark-gray);
+            background: var(--text-dark);
             color: rgba(255, 255, 255, 0.7);
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            font-size: 0.85rem;
+            margin-top: auto;
         }
 
         footer p {
-            margin: 8px 0;
+            margin: 6px 0;
         }
 
         .social-links {
-            margin: 15px 0;
+            margin: 12px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .social-links a {
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
 
         .social-links a:hover {
             color: var(--primary-blue);
-            transform: scale(1.2);
-        }
-
-        /* STATS SECTION */
-        .stats-section {
-            background: linear-gradient(135deg, rgba(91, 158, 237, 0.1), rgba(29, 180, 70, 0.1));
-            padding: 25px 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .stat-item {
-            padding: 15px;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--dark-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            transform: translateY(-2px);
         }
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 480px) {
+            .header {
+                padding: 20px 16px;
+            }
+
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
             }
 
             .header p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .content {
+                padding: 20px 12px;
+            }
+
+            .hero-section {
+                margin-bottom: 24px;
             }
 
             .hero-image {
-                height: 250px;
+                aspect-ratio: 3 / 2;
+                border-radius: var(--radius-md);
             }
 
-            .benefits-list {
-                grid-template-columns: 1fr;
+            .buttons-section {
+                gap: 10px;
+                margin-bottom: 24px;
             }
 
             .cta-button {
-                padding: 16px 30px;
-                font-size: 1rem;
-                letter-spacing: 0.5px;
+                padding: 14px 16px;
+                font-size: 0.9rem;
+                letter-spacing: 0.6px;
+                gap: 6px;
             }
 
             .button-icon {
                 font-size: 1.2rem;
             }
 
-            .stats-section {
-                gap: 10px;
+            .button-text {
+                gap: 1px;
             }
 
-            .stat-number {
-                font-size: 1.5rem;
-            }
-
-            .stat-label {
-                font-size: 0.75rem;
+            .button-label {
+                font-size: 0.7rem;
             }
         }
 
         @media (max-width: 360px) {
-            body {
-                font-size: 14px;
-            }
-
             .header h1 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
-            .promo-section {
-                padding: 20px 15px;
+            .content {
+                padding: 16px 12px;
             }
 
-            .buttons-section {
-                padding: 20px 15px;
+            .cta-button {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+                border-radius: var(--radius-sm);
             }
         }
 
         /* TABLET OPTIMIZATION */
         @media (min-width: 768px) {
+            .header {
+                padding: 32px 20px;
+            }
+
             .header h1 {
-                font-size: 3rem;
+                font-size: 2rem;
             }
 
-            .hero-image {
-                height: 400px;
-                border-radius: 16px;
-            }
-
-            .buttons-section {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                max-width: 700px;
+            .content {
                 padding: 40px 20px;
             }
 
+            .hero-image {
+                aspect-ratio: 16 / 9;
+                border-radius: var(--radius-lg);
+            }
+
+            .buttons-section {
+                gap: 16px;
+                margin-bottom: 40px;
+            }
+
             .cta-button {
-                padding: 20px 40px;
+                padding: 18px 24px;
+                font-size: 1rem;
             }
         }
 
         /* DESKTOP OPTIMIZATION */
         @media (min-width: 1024px) {
-            .header h1 {
-                font-size: 3.5rem;
+            .container {
+                max-width: 700px;
             }
 
-            .hero-section {
-                max-width: 800px;
+            .header h1 {
+                font-size: 2.2rem;
             }
 
             .hero-image {
-                height: 500px;
+                aspect-ratio: 16 / 10;
             }
 
-            .promo-section {
-                max-width: 800px;
+            .cta-button {
+                padding: 20px 28px;
+                font-size: 1.05rem;
             }
 
             .buttons-section {
-                max-width: 800px;
-            }
-
-            .stats-section {
-                max-width: 800px;
+                gap: 18px;
             }
         }
 
-        /* LOADING ANIMATION */
-        .loading {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: currentColor;
-            animation: loading 1.4s infinite;
-        }
-
-        @keyframes loading {
-            0%, 100% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
-        /* PULSE ANIMATION FOR BUTTONS */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
+        /* ANIMATIONS */
+        @keyframes shimmer {
             0% {
-                box-shadow: var(--shadow);
-            }
-            50% {
-                box-shadow: 0 4px 12px rgba(241, 90, 36, 0.5);
+                background-position: -1000px 0;
             }
             100% {
-                box-shadow: var(--shadow);
+                background-position: 1000px 0;
             }
         }
 
@@ -475,261 +428,366 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            background: var(--dark-gray);
+            right: 20px;
+            background: var(--text-dark);
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.3s ease-out;
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s ease-out;
             z-index: 1000;
-            max-width: 300px;
+            max-width: 320px;
         }
 
-        @keyframes slideIn {
+        @keyframes slideUp {
             from {
-                transform: translateX(-100%);
+                transform: translateY(100%);
                 opacity: 0;
             }
             to {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
+            }
+        }
+
+        /* ACCESSIBILITY */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* PRINT */
+        @media print {
+            .hero-section,
+            .buttons-section {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <h1>Belanja Hemat Online</h1>
-        <p>Temukan ribuan produk terbaik dengan harga terjangkau</p>
-    </header>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <h1>Belanja Hemat Online</h1>
+            <p>Promo Spesial Hari Ini</p>
+        </header>
 
-    <!-- HERO IMAGE -->
-    <section class="hero-section">
-        <div class="hero-image" id="heroImage">
-            <span>🛍️ Gambar Produk</span>
-        </div>
-    </section>
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <!-- HERO IMAGE -->
+            <section class="hero-section">
+                <div class="hero-image no-image" id="heroImage">
+                    Gambar Produk
+                </div>
+            </section>
 
-    <!-- STATS -->
-    <section class="stats-section">
-        <div class="stat-item">
-            <div class="stat-number" id="statUsers">500K+</div>
-            <div class="stat-label">Pembeli</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" id="statProducts">1M+</div>
-            <div class="stat-label">Produk</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number" id="statSavings">50%+</div>
-            <div class="stat-label">Diskon</div>
-        </div>
-    </section>
+            <!-- CTA BUTTONS -->
+            <section class="buttons-section">
+                <a href="javascript:void(0)" class="cta-button btn-shopee" id="btnShopee" title="Belanja di Shopee">
+                    <span class="button-icon">🛒</span>
+                    <span class="button-text">
+                        <span class="button-label">Belanja di</span>
+                        <span>SHOPEE</span>
+                    </span>
+                </a>
+                <a href="javascript:void(0)" class="cta-button btn-tokopedia" id="btnTokopedia" title="Belanja di Tokopedia">
+                    <span class="button-icon">🛍️</span>
+                    <span class="button-text">
+                        <span class="button-label">Belanja di</span>
+                        <span>TOKOPEDIA</span>
+                    </span>
+                </a>
+            </section>
+        </main>
 
-    <!-- PROMO INFO -->
-    <section class="promo-section">
-        <div class="promo-tag">✨ PENAWARAN TERBATAS</div>
-        <div class="promo-text">
-            Belanja sekarang dan dapatkan <span class="promo-highlight">bonus cashback</span> serta akses eksklusif ke 
-            <span class="promo-highlight">flash sale</span> terbaru dari kedua platform terpercaya Indonesia.
-        </div>
-        
-        <div class="benefits-list">
-            <div class="benefit-item">
-                <span class="benefit-icon">✓</span>
-                <span>Aman & Terpercaya</span>
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; <span id="year"></span> Belanja Hemat. Semua Hak Dilindungi.</p>
+            <div class="social-links">
+                <a href="javascript:void(0)" title="Facebook">Facebook</a>
+                <a href="javascript:void(0)" title="Instagram">Instagram</a>
+                <a href="javascript:void(0)" title="WhatsApp">WhatsApp</a>
             </div>
-            <div class="benefit-item">
-                <span class="benefit-icon">🚚</span>
-                <span>Gratis Ongkos Kirim</span>
-            </div>
-            <div class="benefit-item">
-                <span class="benefit-icon">💰</span>
-                <span>Harga Terlebih Murah</span>
-            </div>
-            <div class="benefit-item">
-                <span class="benefit-icon">🎁</span>
-                <span>Ada Hadiah Menarik</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA BUTTONS -->
-    <section class="buttons-section">
-        <a href="javascript:void(0)" class="cta-button btn-shopee" id="btnShopee">
-            <span class="button-icon">🛒</span>
-            <span>Belanja di Shopee</span>
-        </a>
-        <a href="javascript:void(0)" class="cta-button btn-tokopedia" id="btnTokopedia">
-            <span class="button-icon">🛍️</span>
-            <span>Belanja di Tokopedia</span>
-        </a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; <span id="year"></span> Belanja Hemat. Semua Hak Dilindungi.</p>
-        <div class="social-links">
-            <a href="javascript:void(0)" title="Facebook">📘 Facebook</a>
-            <a href="javascript:void(0)" title="Instagram">📷 Instagram</a>
-            <a href="javascript:void(0)" title="WhatsApp">💬 WhatsApp</a>
-        </div>
-        <p style="font-size: 0.85rem; margin-top: 15px;">Hubungi kami untuk pertanyaan dan saran</p>
-    </footer>
+        </footer>
+    </div>
 
     <script>
-        // CONFIGURATION - SESUAIKAN DENGAN LINK AFFILIATE ANDA
+        // ============================================
+        // CONFIGURATION - SESUAIKAN DENGAN LINK AFFILIATE
+        // ============================================
         const CONFIG = {
-            shopeeLink: 'https://shopee.co.id/', // Ganti dengan link affiliate Shopee Anda
-            tokopediaLink: 'https://www.tokopedia.com/', // Ganti dengan link affiliate Tokopedia Anda
-            heroImageUrl: null, // Bisa di-set dengan URL gambar eksternal
-            trackingEnabled: true
+            shopeeLink: 'https://shopee.co.id/',
+            tokopediaLink: 'https://www.tokopedia.com/',
+            heroImageUrl: null,
+            trackingEnabled: true,
+            analyticsId: 'GA_MEASUREMENT_ID'
         };
 
-        // INITIALIZE
+        // ============================================
+        // INITIALIZATION
+        // ============================================
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Landing Page Loaded');
             initializeApp();
             setupEventListeners();
-            trackPageView();
+            loadHeroImage();
+            setupTracking();
         });
 
+        // ============================================
+        // CORE FUNCTIONS
+        // ============================================
+
+        /**
+         * Initialize app on page load
+         */
         function initializeApp() {
             // Set tahun di footer
             document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Add page visibility change tracking
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    trackPageView();
+                }
+            });
 
-            // Load image jika ada
-            if (CONFIG.heroImageUrl) {
-                const heroImage = document.getElementById('heroImage');
-                heroImage.innerHTML = `<img src="${CONFIG.heroImageUrl}" alt="Produk Unggulan">`;
+            // Performance observer untuk monitoring
+            if (window.PerformanceObserver) {
+                try {
+                    const observer = new PerformanceObserver((list) => {
+                        for (const entry of list.getEntries()) {
+                            console.log(`Performance: ${entry.name} - ${entry.duration.toFixed(2)}ms`);
+                        }
+                    });
+                    observer.observe({ entryTypes: ['navigation', 'resource'] });
+                } catch (e) {
+                    console.log('Performance monitoring not available');
+                }
+            }
+        }
+
+        /**
+         * Setup event listeners untuk buttons
+         */
+        function setupEventListeners() {
+            const btnShopee = document.getElementById('btnShopee');
+            const btnTokopedia = document.getElementById('btnTokopedia');
+
+            if (btnShopee) {
+                btnShopee.addEventListener('click', (e) => handleButtonClick(e, 'shopee', CONFIG.shopeeLink));
+                btnShopee.addEventListener('mouseover', addButtonHoverEffect);
+                btnShopee.addEventListener('mouseout', removeButtonHoverEffect);
             }
 
-            // Dynamic stats
-            updateStats();
+            if (btnTokopedia) {
+                btnTokopedia.addEventListener('click', (e) => handleButtonClick(e, 'tokopedia', CONFIG.tokopediaLink));
+                btnTokopedia.addEventListener('mouseover', addButtonHoverEffect);
+                btnTokopedia.addEventListener('mouseout', removeButtonHoverEffect);
+            }
+
+            // Touch events untuk mobile
+            document.addEventListener('touchstart', function() {}, false);
         }
 
-        function setupEventListeners() {
-            // Shopee button
-            document.getElementById('btnShopee').addEventListener('click', function(e) {
-                e.preventDefault();
-                handleButtonClick('shopee', CONFIG.shopeeLink);
-            });
+        /**
+         * Load hero image jika tersedia
+         */
+        function loadHeroImage() {
+            const heroImage = document.getElementById('heroImage');
+            
+            if (!heroImage) return;
 
-            // Tokopedia button
-            document.getElementById('btnTokopedia').addEventListener('click', function(e) {
-                e.preventDefault();
-                handleButtonClick('tokopedia', CONFIG.tokopediaLink);
-            });
-
-            // Add pulse animation to buttons on load
-            const buttons = document.querySelectorAll('.cta-button');
-            buttons.forEach((btn, index) => {
-                setTimeout(() => {
-                    btn.classList.add('pulse');
-                }, index * 500);
-            });
+            if (CONFIG.heroImageUrl) {
+                const img = document.createElement('img');
+                img.src = CONFIG.heroImageUrl;
+                img.alt = 'Produk Pilihan';
+                img.onerror = function() {
+                    console.log('Hero image failed to load');
+                    heroImage.classList.add('no-image');
+                };
+                img.onload = function() {
+                    heroImage.innerHTML = '';
+                    heroImage.appendChild(img);
+                };
+            }
         }
 
-        function handleButtonClick(platform, url) {
+        /**
+         * Handle button click event
+         */
+        function handleButtonClick(e, platform, url) {
+            e.preventDefault();
+            
+            // Add visual feedback
+            const button = e.currentTarget;
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 150);
+
             // Track click
             if (CONFIG.trackingEnabled) {
                 trackClick(platform);
             }
 
-            // Show toast notification
+            // Show notification
             showToast(`Membuka ${platform === 'shopee' ? 'Shopee' : 'Tokopedia'}...`);
 
-            // Redirect setelah delay kecil
+            // Open link after brief delay
             setTimeout(() => {
                 window.open(url, '_blank');
-            }, 500);
+            }, 300);
         }
 
-        function trackClick(platform) {
-            try {
-                // Bisa diintegrasikan dengan Google Analytics atau tracking service lain
-                if (window.gtag) {
-                    gtag('event', 'click', {
-                        'event_category': 'affiliate',
-                        'event_label': platform,
-                        'value': 1
-                    });
-                }
-                
-                // Local tracking (localStorage)
-                const key = `clicks_${platform}`;
-                const count = parseInt(localStorage.getItem(key) || '0') + 1;
-                localStorage.setItem(key, count);
-            } catch (error) {
-                console.log('Tracking error:', error);
+        /**
+         * Add hover effect to buttons
+         */
+        function addButtonHoverEffect(e) {
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ripple.style.left = (x - 10) + 'px';
+            ripple.style.top = (y - 10) + 'px';
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            
+            // Hanya tambahkan ripple jika masih ada space
+            if (this.children.length < 5) {
+                this.appendChild(ripple);
             }
         }
 
-        function trackPageView() {
-            try {
-                if (window.gtag) {
-                    gtag('config', 'GA_MEASUREMENT_ID', {
-                        'page_path': window.location.pathname,
-                        'page_title': document.title
-                    });
-                }
-            } catch (error) {
-                console.log('Page view tracking error:', error);
-            }
-        }
-
-        function updateStats() {
-            // Update stats dengan angka random yang dinamis
-            const stats = [
-                { id: 'statUsers', values: ['500K+', '750K+', '1M+'] },
-                { id: 'statProducts', values: ['1M+', '5M+', '10M+'] },
-                { id: 'statSavings', values: ['50%+', '60%+', '70%+'] }
-            ];
-
-            stats.forEach(stat => {
-                const element = document.getElementById(stat.id);
-                let currentIndex = 0;
-                
-                // Update setiap 5 detik
-                setInterval(() => {
-                    currentIndex = (currentIndex + 1) % stat.values.length;
-                    element.style.opacity = '0.5';
-                    setTimeout(() => {
-                        element.textContent = stat.values[currentIndex];
-                        element.style.opacity = '1';
-                    }, 200);
-                }, 5000);
+        /**
+         * Remove hover effect from buttons
+         */
+        function removeButtonHoverEffect(e) {
+            // Cleanup ripples
+            const ripples = this.querySelectorAll('[style*="animation"]');
+            ripples.forEach(ripple => {
+                setTimeout(() => ripple.remove(), 600);
             });
         }
 
+        /**
+         * Track affiliate click
+         */
+        function trackClick(platform) {
+            try {
+                // Google Analytics tracking
+                if (window.gtag) {
+                    gtag('event', 'affiliate_click', {
+                        'event_category': 'engagement',
+                        'event_label': platform,
+                        'timestamp': new Date().toISOString()
+                    });
+                }
+
+                // Local storage tracking
+                const key = `affiliate_click_${platform}`;
+                const sessionKey = `session_clicks_${platform}`;
+                
+                const totalClicks = parseInt(localStorage.getItem(key) || '0') + 1;
+                const sessionClicks = parseInt(sessionStorage.getItem(sessionKey) || '0') + 1;
+                
+                localStorage.setItem(key, totalClicks);
+                sessionStorage.setItem(sessionKey, sessionClicks);
+
+                console.log(`Click tracked: ${platform} (Total: ${totalClicks}, Session: ${sessionClicks})`);
+            } catch (error) {
+                console.error('Tracking error:', error);
+            }
+        }
+
+        /**
+         * Track page view
+         */
+        function trackPageView() {
+            try {
+                if (window.gtag) {
+                    gtag('config', CONFIG.analyticsId, {
+                        'page_path': window.location.pathname,
+                        'page_title': document.title,
+                        'timestamp': new Date().toISOString()
+                    });
+                }
+                
+                // Local session tracking
+                const key = 'page_views';
+                const views = parseInt(sessionStorage.getItem(key) || '0') + 1;
+                sessionStorage.setItem(key, views);
+            } catch (error) {
+                console.error('Page view tracking error:', error);
+            }
+        }
+
+        /**
+         * Setup tracking system
+         */
+        function setupTracking() {
+            // Track page exit
+            window.addEventListener('beforeunload', function() {
+                const timeOnPage = Date.now() - window.pageLoadTime;
+                if (CONFIG.trackingEnabled) {
+                    console.log(`Time on page: ${timeOnPage}ms`);
+                }
+            });
+
+            window.pageLoadTime = Date.now();
+        }
+
+        /**
+         * Show toast notification
+         */
         function showToast(message) {
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.textContent = message;
+            toast.role = 'status';
+            toast.setAttribute('aria-live', 'polite');
+            
             document.body.appendChild(toast);
 
-            // Remove after 3 seconds
             setTimeout(() => {
-                toast.style.animation = 'slideOut 0.3s ease-out';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+                toast.style.animation = 'slideDown 0.4s ease-out forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 2500);
         }
 
-        // Smooth scroll untuk link navigasi
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== 'javascript:void(0)') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-            });
-        });
+        /**
+         * Get click statistics
+         */
+        function getClickStats() {
+            return {
+                shopeeTotal: parseInt(localStorage.getItem('affiliate_click_shopee') || '0'),
+                tokopediaTotal: parseInt(localStorage.getItem('affiliate_click_tokopedia') || '0'),
+                shopeeSession: parseInt(sessionStorage.getItem('session_clicks_shopee') || '0'),
+                tokopediaSession: parseInt(sessionStorage.getItem('session_clicks_tokopedia') || '0')
+            };
+        }
 
-        // Performance: Lazy load images jika ada
+        // Make stats available in console
+        window.getStats = getClickStats;
+
+        // ============================================
+        // PERFORMANCE OPTIMIZATION
+        // ============================================
+
+        // Lazy load images
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -737,6 +795,7 @@
                         const img = entry.target;
                         if (img.dataset.src) {
                             img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
                             observer.unobserve(img);
                         }
                     }
@@ -746,21 +805,56 @@
             document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
         }
 
-        // Add animation API for better experience
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.promo-section, .buttons-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeUp 0.6s ease-out forwards';
-                    }
-                });
+        // Prefetch external links
+        if ('prefetch' in document.head) {
+            const links = [CONFIG.shopeeLink, CONFIG.tokopediaLink];
+            links.forEach(link => {
+                const prefetchLink = document.createElement('link');
+                prefetchLink.rel = 'prefetch';
+                prefetchLink.href = link;
+                document.head.appendChild(prefetchLink);
             });
-
-            elements.forEach(el => observer.observe(el));
         }
 
-        animateOnScroll();
+        // ============================================
+        // CSS ANIMATIONS (untuk ripple effect)
+        // ============================================
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                from {
+                    opacity: 1;
+                    transform: scale(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(4);
+                }
+            }
+
+            @keyframes slideDown {
+                from {
+                    transform: translateY(20px);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ============================================
+        // ERROR HANDLING
+        // ============================================
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.error);
+        });
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
     </script>
 </body>
 </html>

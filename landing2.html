@@ -187,11 +187,17 @@
             color: inherit;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .product-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card:focus-visible {
+            outline: 3px solid rgba(91, 158, 237, 0.6);
+            outline-offset: 3px;
         }
 
         .product-image {

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Landing page affiliate Shopee & Tokopedia dengan Related Product dinamis.">
+    <meta name="keywords" content="belanja online, shopee, tokopedia, affiliate, related products">
+    <meta property="og:title" content="SSD M2 NVME / M2.NVME / M2NVME 1TB RX7">
+    <meta property="og:description" content="Temukan produk terbaik dan langsung belanja ke marketplace.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://down-id.img.susercontent.com/file/e603c8de11fe69a3d2eb52ae49afbc73@resize_w900_nl.webp">
+    <meta name="theme-color" content="#5B9EED">
+    <title>SSD M2 NVME / M2.NVME / M2NVME 1TB RX7 | Belanja Online</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --shopee-orange: #EE5A3F;
+            --tokopedia-green: #1DB446;
+            --primary-blue: #5B9EED;
+            --gradient-blue: linear-gradient(135deg, #5B9EED 0%, #3B82F6 100%);
+            --white: #FFFFFF;
+            --text-dark: #1B1B1B;
+            --text-light: #666666;
+            --surface: #F8F9FA;
+            --shadow-sm: 0 3px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 6px 18px rgba(0,0,0,0.12);
+            --radius-sm: 12px;
+            --radius-md: 18px;
+            --radius-lg: 26px;
+            --transition: all 0.3s ease;
+            --star-color: #F59E0B;
+        }
+
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #EFF2F7;
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        .app-shell {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 22px 18px 40px;
+        }
+
+        /* ── HERO ── */
+        .hero-panel {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: var(--gradient-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-image img.loaded { opacity: 1; }
+
+        .hero-image.no-image {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .hero-skeleton {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #c8d8e8 25%, #ddeaf5 50%, #c8d8e8 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── INFO PANEL ── */
+        .info-panel {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 20px 20px 14px;
+            margin-bottom: 16px;
+        }
+
+        .product-title-main {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .info-table tr { border-bottom: 1px solid #f0f0f0; }
+        .info-table tr:last-child { border-bottom: none; }
+
+        .info-table td {
+            padding: 9px 6px;
+            vertical-align: middle;
+        }
+
+        .info-table td:first-child {
+            color: var(--text-light);
+            font-weight: 500;
+            width: 38%;
+            white-space: nowrap;
+        }
+
+        .info-table td:last-child {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .price-value {
+            color: var(--shopee-orange);
+            font-size: 1.12rem;
+        }
+
+        .price-original {
+            font-size: 0.8rem;
+            color: #aaa;
+            text-decoration: line-through;
+            margin-left: 6px;
+            font-weight: 400;
+        }
+
+        .discount-badge {
+            display: inline-block;
+            background: #FEE2E2;
+            color: var(--shopee-orange);
+            font-size: 0.73rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            margin-left: 6px;
+        }
+
+        .stars-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stars { display: flex; gap: 2px; }
+        .star { font-size: 1rem; color: #e0e0e0; }
+        .star.filled, .star.half { color: var(--star-color); }
+
+        .rating-count {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* ── CTA BUTTONS ── */
+        .button-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .cta-button {
+            padding: 16px 14px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .cta-button:hover { transform: translateY(-2px); }
+
+        .btn-shopee    { background: linear-gradient(135deg, #F57C3B 0%, #EE5A3F 100%); }
+        .btn-tokopedia { background: linear-gradient(135deg, #1EC454 0%, #1DB446 100%); }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: rgba(255,255,255,0.12);
+            transition: left 0.35s ease;
+        }
+        .cta-button:hover::before { left: 100%; }
+
+        /* ── REVIEW SECTION ── */
+        .review-section {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #f0f0f0;
+            border-radius: 2px;
+        }
+
+        .review-summary {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 16px;
+            background: #FFFBF0;
+            border-radius: var(--radius-sm);
+            border: 1px solid #FDE68A;
+            margin-bottom: 16px;
+        }
+
+        .review-score {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: var(--star-color);
+            line-height: 1;
+        }
+
+        .review-summary-right { flex: 1; }
+        .review-summary-right .stars { margin-bottom: 4px; }
+        .review-summary-right .stars .star { font-size: 1.1rem; }
+
+        .review-total {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .review-card {
+            background: var(--surface);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            border-left: 3px solid var(--star-color);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .reviewer-info { flex: 1; }
+
+        .reviewer-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .reviewer-name .loc {
+            font-size: 0.76rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .reviewer-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 3px;
+            flex-wrap: wrap;
+        }
+
+        .reviewer-meta .star { font-size: 0.74rem; }
+
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .verified-badge {
+            font-size: 0.72rem;
+            color: var(--tokopedia-green);
+            font-weight: 600;
+        }
+
+        .review-text {
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.65;
+        }
+
+        /* ── RELATED PRODUCTS ── */
+        .related-section {
+            width: 100%;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 18px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(34,197,94,0.18);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #f3f8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .product-body {
+            padding: 12px 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .product-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+        }
+
+        .product-price {
+            font-size: 0.96rem;
+            font-weight: 800;
+            color: var(--shopee-orange);
+        }
+
+        .product-price .orig {
+            font-size: 0.74rem;
+            color: #aaa;
+            font-weight: 400;
+            text-decoration: line-through;
+            margin-left: 4px;
+        }
+
+        .product-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .product-stars .star { font-size: 0.72rem; }
+
+        .product-stars .sold {
+            font-size: 0.74rem;
+            color: var(--text-light);
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 12px;
+            border-radius: 999px;
+            background: var(--primary-blue);
+            color: white;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.25s ease;
+            margin-top: 4px;
+        }
+
+        .product-link:hover { background: #3b82f6; }
+
+        @media (max-width: 640px) {
+            .app-shell { padding: 14px 12px 28px; }
+            .button-row { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-shell">
+    <!-- HERO -->
+    <div class="hero-panel">
+        <div class="hero-image" id="heroImage">
+            <div class="hero-skeleton" id="heroSkeleton"></div>
+        </div>
+    </div>
+
+    <!-- INFO TABLE -->
+    <div class="info-panel">
+        <div class="product-title-main" id="mainProductTitle"></div>
+        <table class="info-table" id="infoTable"></table>
+    </div>
+
+    <!-- CTA BUTTONS -->
+    <div class="button-row">
+        <a href="javascript:void(0)" class="cta-button btn-shopee" id="btnShopee">
+            <span>🛒 SHOPEE</span>
+        </a>
+        <a href="javascript:void(0)" class="cta-button btn-tokopedia" id="btnTokopedia">
+            <span>🛒 TOKOPEDIA</span>
+        </a>
+    </div>
+
+    <!-- REVIEW SECTION -->
+    <div class="review-section" id="reviewSection" style="display:none">
+        <div class="section-title">⭐ Ulasan Pembeli</div>
+        <div class="review-summary" id="reviewSummary"></div>
+        <div class="review-list" id="reviewList"></div>
+    </div>
+
+    <!-- RELATED PRODUCTS -->
+    <section class="related-section">
+        <div class="section-title">🔗 Produk Lainnya</div>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+</div>
+
+<script>
+const CONFIG = {
+  "heroTitle": "SSD M2 NVME / M2.NVME / M2NVME 1TB RX7",
+  "heroImageUrl": "https://down-id.img.susercontent.com/file/e603c8de11fe69a3d2eb52ae49afbc73@resize_w900_nl.webp",
+  "shopeeLink": "https://google.com",
+  "tokopediaLink": "https://www.youtube.com",
+  "productInfo": [
+    {
+      "label": "💰 Harga",
+      "isPrice": false,
+      "value": "Rp 800.000,-",
+      "originalPrice": "Rp 350.000",
+      "discount": "37%",
+      "isRating": false
+    },
+    {
+      "label": "⭐ Rating",
+      "isRating": true,
+      "score": 4.8,
+      "count": "2.341 ulasan",
+      "isPrice": false,
+      "value": ""
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Alim Joyokusumo",
+      "location": "Jember",
+      "date": "14 Apr 2025",
+      "rating": 5,
+      "text": "Barang ori, cepet banget pengirimannya. SSD-nya ngebut buat laptop lama saya, boot time dari 2 menit jadi 18 detik. Recommended banget!",
+      "verified": true
+    },
+    {
+      "name": "Dewi R.",
+      "location": "Surabaya",
+      "date": "2 Mar 2025",
+      "rating": 5,
+      "text": "Sudah pasang di laptop Lenovo, performa meningkat drastis. Packaging aman, ada garansi resmi. Penjual responsif dan ramah.",
+      "verified": true
+    }
+  ],
+  "relatedProducts": [
+    {
+      "title": "SSD Hongtai N2000 256GB",
+      "price": "20.000,-",
+      "originalPrice": "Rp 350.000",
+      "rating": 4.8,
+      "sold": "1.2rb terjual",
+      "imageUrl": "https://down-id.img.susercontent.com/file/e603c8de11fe69a3d2eb52ae49afbc73@resize_w900_nl.webp",
+      "productLink": "https://shopee.co.id/"
+    },
+    {
+      "title": "SSD Kyo X-Series X30 M.2",
+      "price": "50.000,-",
+      "originalPrice": "Rp 299.000",
+      "rating": 4.6,
+      "sold": "890 terjual",
+      "imageUrl": "https://down-id.img.susercontent.com/file/id-11134207-8224q-mjuygqu2jke80f.webp",
+      "productLink": "https://www.tokopedia.com/"
+    }
+  ]
+};
+
+function renderStars(score) {
+    const full = Math.floor(score);
+    const half = (score % 1) >= 0.5 ? 1 : 0;
+    const empty = 5 - full - half;
+    let html = '<span class="stars">';
+    for (let i = 0; i < full;  i++) html += '<span class="star filled">★</span>';
+    if (half)                        html += '<span class="star half">★</span>';
+    for (let i = 0; i < empty; i++) html += '<span class="star">★</span>';
+    return html + '</span>';
+}
+
+function getInitials(name) {
+    return name.split(' ').slice(0,2).map(w => w[0]).join('').toUpperCase();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Render Hero
+    const wrapper = document.getElementById('heroImage');
+    const skeleton = document.getElementById('heroSkeleton');
+    if (CONFIG.heroImageUrl) {
+        const img = new Image();
+        img.src = CONFIG.heroImageUrl;
+        img.onload = () => {
+            skeleton.remove();
+            img.classList.add('loaded');
+            wrapper.appendChild(img);
+        };
+    }
+
+    // Product Title
+    document.getElementById('mainProductTitle').textContent = CONFIG.heroTitle;
+
+    // Info Table
+    const table = document.getElementById('infoTable');
+    CONFIG.productInfo.forEach(row => {
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        td1.textContent = row.label;
+        const td2 = document.createElement('td');
+        if (row.isRating) {
+            td2.innerHTML = renderStars(row.score) + ' ' + row.score + ' (' + row.count + ')';
+        } else if (row.isPrice) {
+            td2.innerHTML = '<span class="price-value">' + row.value + '</span>';
+        } else {
+            td2.textContent = row.value;
+        }
+        tr.append(td1, td2);
+        table.append(tr);
+    });
+
+    // Links
+    document.getElementById('btnShopee').onclick = () => window.open(CONFIG.shopeeLink, '_blank');
+    document.getElementById('btnTokopedia').onclick = () => window.open(CONFIG.tokopediaLink, '_blank');
+
+    // Reviews
+    if (CONFIG.reviews && CONFIG.reviews.length) {
+        document.getElementById('reviewSection').style.display = 'block';
+        const avg = (CONFIG.reviews.reduce((s, r) => s + r.rating, 0) / CONFIG.reviews.length).toFixed(1);
+        document.getElementById('reviewSummary').innerHTML = 
+            '<div class="review-score">' + avg + '</div>' +
+            '<div class="review-summary-right">' + renderStars(avg) + 
+            '<div class="review-total">dari ' + CONFIG.reviews.length + ' ulasan</div></div>';
+        
+        const list = document.getElementById('reviewList');
+        CONFIG.reviews.forEach(r => {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.innerHTML = '<div class="review-header"><div class="reviewer-avatar">' + getInitials(r.name) + 
+                '</div><div class="reviewer-info"><div class="reviewer-name">' + r.name + '</div>' +
+                '<div class="reviewer-meta">' + renderStars(r.rating) + ' ' + r.date + '</div></div></div>' +
+                '<div class="review-text">' + r.text + '</div>';
+            list.append(card);
+        });
+    }
+
+    // Related Products
+    const grid = document.getElementById('productGrid');
+    CONFIG.relatedProducts.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.onclick = () => window.open(p.productLink, '_blank');
+        card.innerHTML = '<div class="product-image"><img src="' + p.imageUrl + '"></div>' +
+            '<div class="product-body"><div class="product-name">' + p.title + '</div>' +
+            '<div class="product-price">' + p.price + '</div>' +
+            '<div class="product-stars">' + renderStars(p.rating) + ' <span class="sold">' + p.sold + '</span></div>' +
+            '<div class="product-link">Lihat Produk</div></div>';
+        grid.append(card);
+    });
+});
+</script>
+</body>
+</html>
